@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+  //add a new record
   router.post("/",async (req,res)=>{
       let product = new Product();
       product.name=req.body.name;
@@ -35,10 +36,12 @@ router.get("/:id", async (req, res) => {
 
   });
 
+  //update a record
   router.put("/:id",async (req,res)=>{
     let product = await Product.findById(req.params.id);
     product.name=req.body.name;
     product.price=req.body.price;
+    
 
     await product.save();
 
